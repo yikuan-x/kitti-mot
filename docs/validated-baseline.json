@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "accepted_on": "2026-10-31",
+  "scope": "Historical lesson 1 acceptance metadata, not a universal binary lock or redistributed dataset",
+  "environment": {
+    "host": "Windows 11 25H2",
+    "wsl": "2.3.26",
+    "ubuntu": "24.04.1",
+    "kernel": "5.15.167.4-microsoft-standard-WSL2",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_memory_MiB": 8188,
+    "windows_driver": "560.94",
+    "docker_desktop": "4.97.0.244584",
+    "docker_engine": "29.9.2",
+    "cuda_toolkit": "12.6.3",
+    "nvcc": "12.6.85",
+    "tensorrt_python": "10.7.0",
+    "tensorrt_build": "10.7.0.23"
+  },
+  "images": {
+    "nvcr.io/nvidia/tensorrt:24.12-py3": "sha256:611db29a3f616636065e96819ed1aea7ec0913bf14d97a80718e641cd685a021",
+    "kitti-mot:export": "sha256:145c57aa2d8877a95542169fb6d145d48eb59ab8be912ebbdea8c001a2c700f3",
+    "kitti-mot:runtime": "sha256:8b5f60d00e798da3093f474996b74329265f8564233aad5b08a066bda746c4d5"
+  },
+  "source_refs": {
+    "YOLOX": {
+      "tag": "0.3.0",
+      "commit": "419778480ab6ec0590e5d3831b3afb3b46ab2aa3",
+      "weights_release": "0.1.1rc0"
+    },
+    "TrackEval": {
+      "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "setup_patch": "legacy NumPy scalar aliases replaced with built-in types"
+    }
+  },
+  "weights": [
+    {
+      "name": "yolox_s.pth",
+      "sha256": "f55ded7181e1b0c13285c56e7790b8f0e8f8db590fe4edb37f0b7f345c913a30"
+    },
+    {
+      "name": "yolox_nano.pth",
+      "sha256": "cd28f55fbbc1829f99d9ac9b38a16d259a22889739c8728ea877610201feff7b"
+    }
+  ],
+  "models": [
+    {
+      "path": "models/yolox_s.onnx",
+      "bytes": 35911406,
+      "sha256": "0eef7e19ac6aad1ca4aeb776a8b9ad21f661c1f1df28b3a33d2c67b8781eebe3",
+      "input": {
+        "name": "images",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "type": "tensor(float)"
+      },
+      "output": {
+        "name": "output",
+        "shape": [
+          1,
+          8400,
+          85
+        ],
+        "type": "tensor(float)"
+      }
+    },
+    {
+      "path": "models/yolox_nano.onnx",
+      "bytes": 3736220,
+      "sha256": "b90daecb231bf531c1898f12fff1c3d9fe8ef3499e65851a04711c353f817dc9",
+      "input": {
+        "name": "images",
+        "shape": [
+          1,
+          3,
+          416,
+          416
+        ],
+        "type": "tensor(float)"
+      },
+      "output": {
+        "name": "output",
+        "shape": [
+          1,
+          3549,
+          85
+        ],
+        "type": "tensor(float)"
+      }
+    },
+    {
+      "path": "models/yolox_s_fp16.engine",
+      "bytes": 21018556,
+      "sha256": "994756f89e8ff3a7c230c0863200f0a12f65161838e7af9abb5d0047a199a7b1",
+      "scope": "Historical binary specific to the accepted GPU/TensorRT build"
+    }
+  ],
+  "dataset": {
+    "training_frames": 8008,
+    "training_sequences": 21,
+    "sequences": [
+      {
+        "sequence": "0000",
+        "frames": 154,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 1089,
+        "label_sha256": "97f772a27181dfc7ef51b3e64b86bd42e682753b6855fdc58d259ecbed501fd4"
+      },
+      {
+        "sequence": "0001",
+        "frames": 447,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 4271,
+        "label_sha256": "267c8158eba4581729f84ba971d7c35bb8a0bf1bd3443b7edb6e601cbc21d08a"
+      },
+      {
+        "sequence": "0002",
+        "frames": 233,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 2098,
+        "label_sha256": "ba5e11b8a27de653adba8d0641dc0abcb8e3e4d854eb391699748a568e1fe24d"
+      },
+      {
+        "sequence": "0003",
+        "frames": 144,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 861,
+        "label_sha256": "1e7ae668ee7ff2a040edbad648fe4a978557028ca39ef7e1a05ef3f8ec3aa9e9"
+      },
+      {
+        "sequence": "0004",
+        "frames": 314,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 2012,
+        "label_sha256": "ef85ef77e0769b1902a9e7af17688fba3366e2265157490aa0cf6bc702377757"
+      },
+      {
+        "sequence": "0005",
+        "frames": 297,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 2148,
+        "label_sha256": "69366a60b3b7636937bf7e78b91959ca9f239f05e3dcbd90737f1753bf06232e"
+      },
+      {
+        "sequence": "0006",
+        "frames": 270,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 1446,
+        "label_sha256": "9b712c3530e7383aa144881e40409426618fae9002d7bb51050dcd81925320df"
+      },
+      {
+        "sequence": "0007",
+        "frames": 800,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 3722,
+        "label_sha256": "4317d123e35dd351f3055ca5393f64b5e454ef785f40b67996c69ca363fe23ec"
+      },
+      {
+        "sequence": "0008",
+        "frames": 390,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 2088,
+        "label_sha256": "6d67d1044f50e8cfdb4283f474191a9045bd166813beff4451ee668f542ff5b5"
+      },
+      {
+        "sequence": "0009",
+        "frames": 803,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 5301,
+        "label_sha256": "3bfe22ce430bdfb73923c4df2778879b3b637dfa00e8d5e4a2c42f0cfb97c953"
+      },
+      {
+        "sequence": "0010",
+        "frames": 294,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 1323,
+        "label_sha256": "d4a1862adb05c25c6a701dcdb28d79062666ad439407242631548dbff0f7bbf6"
+      },
+      {
+        "sequence": "0011",
+        "frames": 373,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 4359,
+        "label_sha256": "0e230c252827d4b3b10032cd131b462c9f05ed493c06171d3e3aa78ad62eaf5e"
+      },
+      {
+        "sequence": "0012",
+        "frames": 78,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 354,
+        "label_sha256": "304d0bf651529249e1b3a997114376f7c74c9df815d1a7ecf5654fdf3c3552d6"
+      },
+      {
+        "sequence": "0013",
+        "frames": 340,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 2410,
+        "label_sha256": "29275f8a808298e4c816787bcc68d8cb891a1eeaf29e80081548af4493a41180"
+      },
+      {
+        "sequence": "0014",
+        "frames": 106,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 798,
+        "label_sha256": "2410ee567142c11f4e0c62da47bc1ea3dafbb339eb50ce1e581a9b3b8bcb8d47"
+      },
+      {
+        "sequence": "0015",
+        "frames": 376,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 3495,
+        "label_sha256": "54787b567aa27c390c345b51e1b408ce0b07ec321b26496ee66a8cf05c2fa40c"
+      },
+      {
+        "sequence": "0016",
+        "frames": 209,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 4145,
+        "label_sha256": "28ea0edb2f582bb9b6de436d33103ae65f8c6a7b44142d72b08385ee3ea78c75"
+      },
+      {
+        "sequence": "0017",
+        "frames": 145,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 1499,
+        "label_sha256": "0858eba06de0852b5bae8c2101eeac9ea4ad53f52c1af32b132f1aeb8d45f2cd"
+      },
+      {
+        "sequence": "0018",
+        "frames": 339,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 1794,
+        "label_sha256": "02298e3cd13a77eb14b511aa66c8dd126680305f856bc4247fe2971b9598b0d8"
+      },
+      {
+        "sequence": "0019",
+        "frames": 1059,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 11192,
+        "label_sha256": "721ac76b2353f019003c91d5de1b17ba87da966ce52437709af02fa6750ff125"
+      },
+      {
+        "sequence": "0020",
+        "frames": 837,
+        "png_decode": "PASS",
+        "archive_byte_comparison": "PASS",
+        "label_rows": 8896,
+        "label_sha256": "8e14201118adc5264ec228650715bcf5828a43abdf066cc2a02ac15982f23a2a"
+      }
+    ],
+    "splits": {
+      "training": {
+        "sequences": 21,
+        "frames": 8008
+      },
+      "val": {
+        "sequences": 9,
+        "frames": 2981
+      },
+      "training_minus_val": {
+        "sequences": 12,
+        "frames": 5027
+      }
+    },
+    "seqmaps": [
+      {
+        "split": "training",
+        "path": "data/trackeval/gt/kitti/kitti_2d_box_train/evaluate_tracking.seqmap.training",
+        "sha256": "e91464a4e1c14bfe75bb88d51ffe6fe4b7cc65a7433bf15787489b686019710d"
+      },
+      {
+        "split": "val",
+        "path": "data/trackeval/gt/kitti/kitti_2d_box_train/evaluate_tracking.seqmap.val",
+        "sha256": "392f856e29acca52dc89c5416d92778e6beae7ceb4be4ba43794ee20f2ec37d4"
+      },
+      {
+        "split": "training_minus_val",
+        "path": "data/trackeval/gt/kitti/kitti_2d_box_train/evaluate_tracking.seqmap.training_minus_val",
+        "sha256": "33718a2458d6be340a9bff9deec39b0ba6a0d5d6247ea9015a5f0e9d8f52ebe3"
+      }
+    ],
+    "archives": [
+      {
+        "path": "data/downloads/data_tracking_image_2.zip",
+        "bytes": 15813146295,
+        "sha256": "9206250fbcd0074328bf589ec81ab0b0681608db59537f024b1b9ff44e81d53c"
+      },
+      {
+        "path": "data/downloads/trackeval_data.zip",
+        "bytes": 149957160,
+        "sha256": "148a4bdf56f8cb32f9bde4b3d70717242cbb2e61900ef0101abc4652e268f2a5"
+      }
+    ],
+    "archive_hash_scope": "Locally recorded, not a comparison with official published checksums"
+  },
+  "engine_benchmark": {
+    "scope": "Synthetic-input engine-only microbenchmark, excludes complete detection/tracking pipeline",
+    "batch": 1,
+    "warmup_ms": 500,
+    "duration_s": 5,
+    "minimum_iterations": 100,
+    "throughput_qps": 407.735,
+    "gpu_compute_mean_ms": 1.76664,
+    "latency_mean_ms": 2.37614,
+    "latency_p95_ms": 2.72852,
+    "sampled_whole_gpu_peak_MiB": 2102
+  },
+  "ciwt_reference": {
+    "scope": "Evaluator/data self-check only; not project algorithm scores",
+    "car_HOTA": 66.985,
+    "pedestrian_HOTA": 49.137
+  },
+  "unimplemented": [
+    "C++ application and CMake project",
+    "Image preprocessing and postprocessing integration",
+    "Tracker",
+    "Project AP/HOTA measurement",
+    "Real-frame FP32/FP16 accuracy comparison",
+    "INT8"
+  ]
+}

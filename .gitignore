@@ -1,0 +1,65 @@
+# Datasets (CC BY-NC-SA, never commit) and large artifacts
+data/
+models/
+outputs/
+third_party/
+*.onnx
+*.engine
+*.pth
+*.pt
+*.zip
+*.plan
+*.ckpt
+*.weights
+*.safetensors
+*.bin
+*.npy
+*.npz
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.vhdx
+*.pdf
+*.mp4
+*.avi
+*.log
+*.log.*
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+.aws/
+.ssh/
+.docker/
+.codex/
+.agents/
+.netrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+token*.json
+
+# Build
+build/
+cmake-build-*/
+compile_commands.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.cache/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
